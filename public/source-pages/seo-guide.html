@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SEO &amp; Local Search — TheNextGen Healthcare Marketing</title>
+<meta name="description" content="SEO &amp; Local Search for healthcare practices. Built for results." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F9FA; --bg-alt:#FAFAF8; --bg-soft:#F1F2F4; --bg-dark:#0E1116;
+  --heading:#2D3748; --body:#4A5568; --muted:#718096;
+  --accent-soft:#8FBC8F; --line:#B38B6D;
+  --line-soft:rgba(179,139,109,.28);
+  --line-faint:rgba(45,55,72,.08);
+  --line-strong:rgba(45,55,72,.80);
+  --cta:#576DB5; --cta-hover:#46599C; --cta-deep:#3F5396;
+  --warm:#E5A674;
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+  --max:1320px; --pad:clamp(20px,4vw,48px);
+}
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  background:var(--bg); color:var(--body);
+  font-family:var(--font); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:hidden; scroll-behavior:smooth;
+}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; border:0; background:transparent; }
+img{ max-width:100%; display:block; }
+.container{ max-width:var(--max); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); position:relative; }
+
+/* NAV */
+.nav-wrap{ position:sticky; top:0; z-index:50; backdrop-filter:blur(14px) saturate(140%); -webkit-backdrop-filter:blur(14px) saturate(140%); background:rgba(248,249,250,.82); border-bottom:1px solid var(--line-soft); }
+.nav{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; height:78px; gap:32px; }
+.logo{ display:flex; align-items:center; height:40px; font-weight:800; font-size:18px; color:var(--heading); letter-spacing:-.01em; }
+.logo-mark{ width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,var(--cta) 0%,#6E84C8 100%); display:grid; place-items:center; margin-right:10px; box-shadow:0 6px 16px -8px rgba(87,109,181,.5); }
+.logo-mark svg{ color:#fff; }
+.menu{ display:flex; justify-content:center; gap:6px; }
+.menu a, .menu button.menu-link{ position:relative; display:inline-flex; align-items:center; gap:6px; padding:10px 14px; font-size:14.5px; font-weight:500; color:var(--body); border-radius:8px; transition:color .2s, background .2s; }
+.menu a:hover, .menu button.menu-link:hover{ color:var(--heading); background:rgba(179,139,109,.06); }
+.menu a::after{ content:""; position:absolute; left:14px; right:14px; bottom:6px; height:1px; background:var(--line); transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
+.menu a:hover::after{ transform:scaleX(1); }
+.menu a.active, .menu .menu-link.active{ color:var(--heading); background:rgba(179,139,109,.08); }
+.menu a.active::after, .menu .menu-link.active::after{ content:""; position:absolute; left:14px; right:14px; bottom:6px; height:1px; background:var(--line); transform:scaleX(1); }
+.menu .chev{ width:12px; height:12px; color:var(--muted); }
+.nav-right{ display:flex; align-items:center; gap:8px; }
+.lang{ display:inline-flex; align-items:center; gap:6px; padding:9px 12px; font-size:13.5px; font-weight:600; color:var(--body); border:1px solid var(--line-soft); border-radius:999px; background:rgba(255,255,255,.5); transition:border-color .2s, color .2s, background .2s; }
+.lang:hover{ border-color:var(--line); color:var(--heading); background:#fff; }
+.lang .globe{ color:var(--line); }
+.lang .chev{ color:var(--muted); }
+.icon-btn{ width:40px; height:40px; display:grid; place-items:center; border-radius:50%; border:1px solid var(--line-soft); color:var(--body); background:rgba(255,255,255,.5); transition:border-color .2s, color .2s, background .2s; }
+.icon-btn:hover{ border-color:var(--line); color:var(--heading); background:#fff; }
+
+/* SECTION COMMON */
+.section{ padding: clamp(72px,9vw,120px) 0; border-bottom: 1.5px solid var(--line-strong); }
+.sec-head{ display:grid; grid-template-columns: 1fr auto; gap:24px; align-items:end; margin-bottom: clamp(40px,5vw,64px); padding-bottom:18px; border-bottom: 1.5px solid var(--heading); }
+.sec-num{ display:inline-flex; align-items:center; gap:10px; font-size:11px; font-weight:800; color:var(--muted); letter-spacing:.22em; margin-bottom:14px; }
+.sec-num::before{ content:""; width:24px; height:1px; background:var(--line); }
+.sec-title{ font-size: clamp(28px,3.6vw,44px); font-weight:700; color:var(--heading); line-height:1.05; letter-spacing:-.025em; margin:0; text-wrap:balance; max-width:22ch; }
+.sec-title em{ font-style:normal; color:var(--cta); }
+.sec-meta{ font-size:11px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); text-align:right; line-height:1.5; }
+
+/* HERO */
+.hero{ padding: clamp(48px,6vw,88px) 0 clamp(56px,7vw,96px); border-bottom: 1.5px solid var(--line-strong); position:relative; overflow:hidden; }
+.hero::before{ content:""; position:absolute; top:-10%; right:-10%; width:60%; height:80%; background: radial-gradient(50% 60% at 50% 40%, rgba(143,188,143,.14), transparent 65%), radial-gradient(40% 50% at 70% 70%, rgba(87,109,181,.12), transparent 65%); pointer-events:none; z-index:0; }
+.hero .container{ position:relative; z-index:1; }
+.hero-grid{ display:grid; grid-template-columns: 1.05fr 1fr; gap: clamp(40px,5vw,72px); align-items:center; }
+.hero-crumb{ display:flex; align-items:center; gap:14px; font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-bottom:28px; }
+.hero-crumb::before{ content:""; width:6px; height:6px; background:var(--line); }
+.hero-crumb a{ transition:color .2s; }
+.hero-crumb a:hover{ color:var(--heading); }
+.hero-crumb .cur{ color:var(--heading); }
+.hero-crumb .sep{ color:var(--line); opacity:.5; }
+.hero-title{ font-size: clamp(36px,5vw,72px); font-weight:700; color:var(--heading); line-height:.98; letter-spacing:-.035em; margin:0 0 24px; max-width:14ch; text-wrap:balance; }
+.hero-title em{ font-style:normal; color:var(--cta); }
+.hero-lede{ font-size: clamp(15px,1.4vw,17px); line-height:1.6; color:var(--body); max-width:48ch; margin:0 0 32px; }
+.hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+.btn-primary{ display:inline-flex; align-items:center; gap:12px; padding:14px 24px; background:var(--heading); color:#fff; border-radius:999px; font-size:14px; font-weight:700; box-shadow:0 1px 0 rgba(255,255,255,.15) inset, 0 12px 28px -10px rgba(45,55,72,.4); transition:background .2s, gap .2s, transform .15s; }
+.btn-primary:hover{ background:var(--cta); gap:16px; transform:translateY(-1px); }
+.btn-primary svg{ width:13px; height:13px; }
+.btn-ghost{ display:inline-flex; align-items:center; gap:10px; padding:14px 22px; color:var(--heading); border:1.5px solid var(--heading); border-radius:999px; font-size:14px; font-weight:700; transition:background .2s, color .2s, gap .2s; }
+.btn-ghost:hover{ background:var(--heading); color:#fff; gap:14px; }
+.btn-ghost svg{ width:13px; height:13px; }
+
+/* 3D HERO VISUAL */
+.hero-3d{ position:relative; height: clamp(440px,45vw,540px); perspective:1400px; perspective-origin:50% 50%; }
+.hero-3d::before{ content:""; position:absolute; inset:8% 10%; background: radial-gradient(60% 70% at 50% 50%, rgba(87,109,181,.18), transparent 65%); filter: blur(40px); z-index:0; }
+.h3d-main{ position:absolute; top:8%; left:6%; right:6%; bottom:8%; background: rgba(255,255,255,.85); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); border:1px solid rgba(255,255,255,1); border-radius:22px; padding:22px; box-shadow: 0 1px 0 rgba(255,255,255,1) inset, 0 30px 60px -20px rgba(45,55,72,.18), 0 16px 32px -12px rgba(87,109,181,.15); transform: rotateY(-6deg) rotateX(3deg); transform-style: preserve-3d; animation: float-main 7s ease-in-out infinite; z-index:2; overflow:hidden; }
+@keyframes float-main{ 0%,100%{ transform: rotateY(-6deg) rotateX(3deg) translateY(0); } 50%{ transform: rotateY(-5deg) rotateX(2deg) translateY(-8px); } }
+.h3d-metric{ position:absolute; top:-2%; right:-4%; background: rgba(255,255,255,.92); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border:1px solid rgba(255,255,255,1); border-radius:16px; padding:14px 18px; box-shadow: 0 1px 0 rgba(255,255,255,1) inset, 0 20px 40px -16px rgba(45,55,72,.20), 0 8px 16px -10px rgba(143,188,143,.30); z-index:4; animation: float-metric 6s ease-in-out infinite; animation-delay:-2s; transform: rotate(3deg); min-width:180px; }
+@keyframes float-metric{ 0%,100%{ transform: rotate(3deg) translateY(0); } 50%{ transform: rotate(2deg) translateY(-10px); } }
+.h3d-metric-row{ display:flex; align-items:center; gap:10px; }
+.h3d-metric-icon{ width:32px; height:32px; border-radius:50%; background: rgba(143,188,143,.18); color:#5a7d5a; display:grid; place-items:center; flex-shrink:0; }
+.h3d-metric-icon svg{ width:14px; height:14px; }
+.h3d-metric-num{ font-size:22px; font-weight:800; color:var(--heading); letter-spacing:-.025em; line-height:1; }
+.h3d-metric-num em{ font-style:normal; color:#5a7d5a; }
+.h3d-metric-label{ font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+.h3d-rank-badge{ position:absolute; bottom:-2%; left:-4%; background: linear-gradient(135deg, var(--cta) 0%, #6E84C8 100%); color:#fff; border-radius:16px; padding:14px 18px; box-shadow: 0 1px 0 rgba(255,255,255,.2) inset, 0 20px 40px -16px rgba(87,109,181,.5), 0 8px 20px -10px rgba(87,109,181,.4); z-index:4; animation: float-badge 8s ease-in-out infinite; animation-delay:-4s; transform: rotate(-3deg); display:flex; align-items:center; gap:12px; }
+@keyframes float-badge{ 0%,100%{ transform: rotate(-3deg) translateY(0); } 50%{ transform: rotate(-2deg) translateY(-8px); } }
+.h3d-rank-icon{ width:36px; height:36px; border-radius:10px; background: rgba(255,255,255,.18); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border:1px solid rgba(255,255,255,.25); display:grid; place-items:center; flex-shrink:0; }
+.h3d-rank-icon svg{ width:16px; height:16px; color:#fff; }
+.h3d-rank-num{ font-size:22px; font-weight:800; letter-spacing:-.025em; line-height:1; color:#fff; }
+.h3d-rank-label{ font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color: rgba(255,255,255,.85); margin-top:4px; }
+.h3d-keyword{ position:absolute; top:38%; right:-8%; padding:8px 14px; background: rgba(255,255,255,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border:1px solid rgba(255,255,255,1); border-radius:999px; font-size:11.5px; font-weight:700; color:var(--heading); box-shadow: 0 16px 32px -16px rgba(45,55,72,.25); z-index:3; animation: float-keyword 9s ease-in-out infinite; animation-delay:-3s; display:inline-flex; align-items:center; gap:8px; }
+@keyframes float-keyword{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
+.h3d-keyword .arrow-up{ color:#5a7d5a; font-size:13px; line-height:1; }
+
+/* H3D MAIN INNER — flexible per service */
+.h3d-bar{ display:flex; align-items:center; gap:10px; padding:11px 14px; background: var(--bg-soft); border-radius:999px; margin-bottom:14px; font-size:13px; color:var(--heading); font-weight:500; }
+.h3d-bar svg{ width:14px; height:14px; color:var(--muted); flex-shrink:0; }
+.h3d-cursor{ display:inline-block; width:1.5px; height:12px; background: var(--cta); vertical-align: middle; margin-left:1px; animation: blink 1.1s steps(1) infinite; }
+@keyframes blink{ 0%,50%{ opacity:1; } 51%,100%{ opacity:0; } }
+.h3d-pack-tag{ display:inline-block; font-size:9.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--cta); margin-bottom:8px; }
+.h3d-map{ height:96px; background: radial-gradient(60% 90% at 35% 50%, rgba(87,109,181,.20), transparent 70%), radial-gradient(50% 80% at 75% 60%, rgba(143,188,143,.14), transparent 70%), var(--bg-alt); border-radius:12px; margin-bottom:12px; position:relative; overflow:hidden; border:1px solid var(--line-faint); }
+.h3d-map::before{ content:""; position:absolute; inset:0; background-image: linear-gradient(45deg, transparent 48%, var(--line-faint) 48%, var(--line-faint) 52%, transparent 52%), linear-gradient(-45deg, transparent 48%, var(--line-faint) 48%, var(--line-faint) 52%, transparent 52%); background-size: 40px 40px; opacity:.5; }
+.h3d-pin{ position:absolute; width:18px; height:18px; border-radius:50% 50% 50% 0; transform: rotate(-45deg); z-index:1; }
+.h3d-pin.you{ top:30%; left:28%; background:var(--cta); box-shadow: 0 4px 12px rgba(87,109,181,.5), 0 0 0 0 rgba(87,109,181,.4); animation: pin-pulse 2s ease-in-out infinite; }
+@keyframes pin-pulse{ 0%,100%{ box-shadow: 0 4px 12px rgba(87,109,181,.5), 0 0 0 0 rgba(87,109,181,.4); } 50%{ box-shadow: 0 4px 12px rgba(87,109,181,.5), 0 0 0 12px rgba(87,109,181,0); } }
+.h3d-pin.b{ top:55%; left:60%; background: var(--line); width:14px; height:14px; }
+.h3d-pin.c{ top:38%; left:78%; background: var(--accent-soft); width:14px; height:14px; }
+.h3d-row{ display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--line-faint); font-size:12px; }
+.h3d-row:last-child{ border-bottom:0; }
+.h3d-rank{ width:22px; height:22px; border-radius:6px; background:var(--bg-soft); color:var(--heading); display:grid; place-items:center; font-size:11px; font-weight:800; flex-shrink:0; }
+.h3d-rank.you{ background:var(--cta); color:#fff; box-shadow: 0 4px 10px rgba(87,109,181,.35); }
+.h3d-row-text{ flex:1; min-width:0; }
+.h3d-row-name{ font-weight:700; color:var(--heading); font-size:12.5px; }
+.h3d-row-name.you{ color:var(--cta); }
+.h3d-row-meta{ font-size:10.5px; color:var(--muted); }
+.h3d-stars{ color: var(--warm); font-weight:700; }
+.h3d-row-tick{ width:18px; height:18px; border-radius:50%; background: var(--accent-soft); color:#fff; display:grid; place-items:center; flex-shrink:0; }
+.h3d-row-tick svg{ width:10px; height:10px; }
+/* generic chart inside h3d-main */
+.h3d-chart{ height:120px; padding:0; position:relative; margin-bottom:12px; }
+.h3d-chart svg{ width:100%; height:100%; }
+.h3d-bars{ display:flex; align-items:flex-end; gap:8px; height:120px; padding:6px 0; }
+.h3d-bar-col{ flex:1; background: linear-gradient(180deg, var(--cta), var(--cta-deep)); border-radius:6px 6px 0 0; transition: height .5s ease; opacity:.85; }
+.h3d-bar-col.tan{ background: linear-gradient(180deg, var(--line), #9c7959); }
+.h3d-bar-col.sage{ background: linear-gradient(180deg, var(--accent-soft), #6e9a6e); }
+.h3d-stat{ display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line-faint); font-size:12.5px; }
+.h3d-stat:last-child{ border-bottom:0; }
+.h3d-stat-label{ color:var(--muted); font-weight:500; }
+.h3d-stat-val{ color:var(--heading); font-weight:700; }
+.h3d-stat-val.up{ color:#5a7d5a; }
+
+/* PROBLEM → OUTCOME */
+.po{ background: var(--bg); }
+.po-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,72px); align-items:center; }
+.po-list{ list-style:none; padding:0; margin:0; }
+.po-pain{ display:grid; grid-template-columns: 32px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--line-faint); }
+.po-pain:first-child{ padding-top:0; }
+.po-pain:last-child{ border-bottom:0; padding-bottom:0; }
+.po-icon{ width:32px; height:32px; border-radius:8px; background: rgba(229,166,116,.15); color:#a06b3e; display:grid; place-items:center; flex-shrink:0; }
+.po-icon svg{ width:14px; height:14px; }
+.po-pain-title{ font-size:16px; font-weight:700; color: var(--heading); margin:0 0 4px; }
+.po-pain-desc{ font-size:13.5px; line-height:1.55; color:var(--muted); margin:0; }
+/* outcome card */
+.po-out{ position:relative; background: rgba(255,255,255,.7); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border:1px solid rgba(255,255,255,.9); box-shadow: 0 1px 0 rgba(255,255,255,.95) inset, 0 24px 56px -28px rgba(45,55,72,.18); border-radius:20px; padding:32px; }
+.po-out-eyebrow{ display:inline-flex; align-items:center; gap:10px; font-size:10.5px; font-weight:800; letter-spacing:.20em; text-transform:uppercase; color: #5a7d5a; margin-bottom:14px; padding:6px 12px; background: rgba(143,188,143,.15); border-radius:999px; }
+.po-out-eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background: var(--accent-soft); box-shadow: 0 0 8px rgba(143,188,143,.6); }
+.po-out h3{ font-size:22px; font-weight:700; color: var(--heading); line-height:1.2; letter-spacing:-.015em; margin:0 0 18px; }
+.po-out-line{ display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--line-faint); font-size:14px; }
+.po-out-line:last-child{ border-bottom:0; padding-bottom:0; }
+.po-out-line svg{ width:14px; height:14px; color: var(--accent-soft); flex-shrink:0; }
+.po-out-line strong{ color: var(--heading); font-weight:700; margin-left:auto; }
+
+/* WHAT WE DO — 6 cards */
+.do{ background: var(--bg-alt); }
+.do-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
+.do-card{ position:relative; background: rgba(255,255,255,.65); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border:1px solid rgba(255,255,255,.9); box-shadow: 0 1px 0 rgba(255,255,255,.95) inset, 0 12px 28px -20px rgba(45,55,72,.14); border-radius:18px; padding:28px 26px; transition:transform .35s, box-shadow .35s, background .35s; overflow:hidden; isolation:isolate; }
+.do-card::after{ content:""; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--cta), var(--accent-soft), var(--line)); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.2,.7,.2,1); }
+.do-card:hover{ transform: translateY(-6px); background: rgba(255,255,255,.92); box-shadow: 0 28px 56px -28px rgba(45,55,72,.22); }
+.do-card:hover::after{ transform: scaleX(1); }
+.do-icon{ width:48px; height:48px; border-radius:14px; background: linear-gradient(135deg, rgba(87,109,181,.14), rgba(143,188,143,.18)); border:1px solid rgba(255,255,255,.7); box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 6px 16px -10px rgba(45,55,72,.18); display:grid; place-items:center; color: var(--cta); margin-bottom:18px; transition: transform .35s; }
+.do-card:hover .do-icon{ transform: rotate(-4deg) scale(1.06); }
+.do-icon svg{ width:22px; height:22px; }
+.do-name{ font-size:17px; font-weight:700; color: var(--heading); margin:0 0 8px; letter-spacing:-.005em; transition:color .25s; }
+.do-card:hover .do-name{ color: var(--cta); }
+.do-desc{ font-size:13.5px; line-height:1.55; color: var(--muted); margin:0; }
+
+/* HOW IT WORKS — 4 step horizontal */
+.how{ background: var(--bg); }
+.how-track{ position:relative; padding:8px 0; }
+.how-track::before{ content:""; position:absolute; top:34px; left:5%; right:5%; height:1px; background-image: linear-gradient(to right, var(--line) 50%, transparent 50%); background-size:6px 1px; background-repeat:repeat-x; z-index:0; }
+.how-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:24px; position:relative; z-index:1; }
+.how-step{ text-align:left; }
+.how-dot{ width:64px; height:64px; border-radius:50%; background:#fff; border:1.5px solid var(--heading); display:grid; place-items:center; color:var(--heading); font-size:18px; font-weight:800; letter-spacing:-.02em; margin-bottom:22px; transition: background .25s, color .25s, transform .3s; position:relative; z-index:2; }
+.how-step:hover .how-dot{ background: var(--heading); color:#fff; transform: scale(1.05); }
+.how-name{ font-size:17px; font-weight:700; color: var(--heading); line-height:1.25; letter-spacing:-.005em; margin:0 0 8px; transition: color .25s; }
+.how-step:hover .how-name{ color: var(--cta); }
+.how-desc{ font-size:13.5px; line-height:1.6; color: var(--muted); margin:0; max-width:24ch; }
+
+/* RESULTS — big numbers */
+.results{ background: var(--bg-alt); }
+.res-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:0; background: rgba(255,255,255,.55); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); border:1px solid rgba(255,255,255,.9); box-shadow: 0 1px 0 rgba(255,255,255,.95) inset, 0 24px 60px -28px rgba(45,55,72,.18); border-radius:24px; padding: clamp(28px,3.5vw,44px) clamp(20px,3vw,40px); }
+.res-item{ text-align:center; padding:8px clamp(12px,2vw,24px); border-right:1px solid var(--line-faint); transition:transform .3s; }
+.res-item:last-child{ border-right:0; }
+.res-item:hover{ transform: translateY(-3px); }
+.res-num{ font-size: clamp(32px,4vw,56px); font-weight:800; color:var(--heading); line-height:1; letter-spacing:-.035em; margin-bottom:12px; transition: color .3s; }
+.res-item:hover .res-num{ color: var(--cta); }
+.res-num em{ font-style: normal; color: var(--line); }
+.res-lbl{ font-size:12.5px; font-weight:600; color: var(--muted); line-height:1.4; max-width:22ch; margin: 0 auto; }
+
+/* CASE STUDY SLIDER */
+.cases{ background: var(--bg); }
+.cs-slider{ position:relative; }
+.cs-track-wrap{ overflow:hidden; margin:0 -16px; padding:12px 16px; }
+.cs-track{ display:flex; gap:20px; transition: transform .55s cubic-bezier(.2,.7,.2,1); will-change:transform; }
+.cs-card{ flex: 0 0 calc((100% - 40px) / 3); background:#fff; border:1px solid var(--line-soft); border-radius:18px; padding:28px 26px; text-decoration:none; color:var(--heading); transition: transform .35s, box-shadow .35s, border-color .35s; position:relative; overflow:hidden; display:flex; flex-direction:column; min-height:240px; }
+.cs-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--cta), var(--accent-soft), var(--line)); transform:scaleX(0); transform-origin:left; transition: transform .45s; }
+.cs-card:hover{ transform: translateY(-6px); border-color: rgba(179,139,109,.5); box-shadow: 0 28px 56px -28px rgba(45,55,72,.20); }
+.cs-card:hover::before{ transform: scaleX(1); }
+.cs-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:18px; }
+.cs-emoji{ width:48px; height:48px; border-radius:12px; background: linear-gradient(135deg, rgba(87,109,181,.14), rgba(143,188,143,.18)); border:1px solid rgba(255,255,255,.7); box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 6px 16px -10px rgba(45,55,72,.18); display:grid; place-items:center; font-size:22px; }
+.cs-num{ font-size:32px; font-weight:800; color: var(--cta); letter-spacing:-.035em; line-height:1; text-align:right; }
+.cs-num-lbl{ font-size:10px; font-weight:700; color: var(--muted); letter-spacing:.14em; text-transform:uppercase; text-align:right; margin-top:4px; }
+.cs-sector{ font-size:11px; font-weight:700; color: var(--line); letter-spacing:.14em; text-transform:uppercase; margin-bottom:6px; display:block; }
+.cs-name{ font-size:17px; font-weight:700; color: var(--heading); line-height:1.25; margin:0 0 12px; }
+.cs-block{ padding:8px 0; border-top:1px solid var(--line-faint); font-size:13px; line-height:1.5; color: var(--body); }
+.cs-block:first-of-type{ border-top:1px solid var(--line-faint); margin-top:auto; }
+.cs-block strong{ display:block; font-size:9.5px; font-weight:700; color: var(--muted); letter-spacing:.18em; text-transform:uppercase; margin-bottom:3px; }
+.cs-controls{ display:flex; align-items:center; gap:24px; margin-top:36px; justify-content:center; }
+.cs-progress{ flex:0 1 320px; height:1px; background-image: linear-gradient(to right, var(--line-soft) 50%, transparent 50%); background-size: 8px 1px; background-repeat: repeat-x; position:relative; }
+.cs-progress::before{ content:""; position:absolute; left:0; top:-1px; height:3px; width: var(--cs-fill, 33%); background: var(--heading); border-radius:3px; transition: width .55s cubic-bezier(.2,.7,.2,1); }
+.cs-btn{ width:42px; height:42px; background: rgba(255,255,255,.55); backdrop-filter: blur(10px) saturate(140%); -webkit-backdrop-filter: blur(10px) saturate(140%); border:1px solid rgba(255,255,255,.9); box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 4px 12px -6px rgba(45,55,72,.18); border-radius:50%; color: var(--heading); display:grid; place-items:center; transition: background .25s, color .25s, transform .15s, opacity .2s; }
+.cs-btn:hover{ background: var(--heading); color:#fff; border-color: var(--heading); }
+.cs-btn[data-cs-prev]:hover{ transform: translateX(-2px); }
+.cs-btn[data-cs-next]:hover{ transform: translateX(2px); }
+.cs-btn:disabled{ opacity:.25; cursor: not-allowed; }
+.cs-btn:disabled:hover{ background: rgba(255,255,255,.55); color: var(--heading); transform: none; }
+.cs-btn svg{ width:15px; height:15px; }
+
+/* CTA */
+.cta{ padding: clamp(80px,10vw,130px) 0; background: var(--bg); }
+.cta-panel{ padding: clamp(48px,6vw,80px); background: radial-gradient(700px 400px at 15% 30%, rgba(87,109,181,.20), transparent 65%), radial-gradient(600px 380px at 85% 75%, rgba(179,139,109,.16), transparent 65%), linear-gradient(135deg, #0E1116 0%, #1B2030 50%, #161A22 100%); border-radius:32px; color:#fff; text-align:center; overflow:hidden; position:relative; }
+.cta-eyebrow{ display:inline-flex; align-items:center; gap:10px; font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color: var(--accent-soft); margin-bottom:18px; }
+.cta-eyebrow::before{ content:""; width:6px; height:6px; border-radius:50%; background: var(--accent-soft); box-shadow:0 0 10px rgba(143,188,143,.5); }
+.cta-title{ font-size: clamp(28px,4vw,48px); font-weight:700; color:#fff; line-height:1.05; letter-spacing:-.025em; margin: 0 auto 14px; max-width: 18ch; text-wrap: balance; }
+.cta-desc{ font-size:15px; line-height:1.65; color: rgba(255,255,255,.7); margin: 0 auto 28px; max-width: 46ch; }
+.cta .btn-primary{ background: var(--cta); box-shadow: 0 1px 0 rgba(255,255,255,.15) inset, 0 16px 32px -10px rgba(87,109,181,.5); }
+.cta .btn-primary:hover{ background: var(--cta-hover); }
+
+/* FOOTER */
+.footer{ background: var(--bg-alt); color: var(--body); padding: clamp(60px,8vw,90px) 0 32px; }
+.ft-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1.4fr; gap: clamp(28px,4vw,52px); margin-bottom: 56px; }
+.ft-brand .ft-logo{ display:flex; align-items:center; height:38px; margin-bottom:18px; font-size:18px; font-weight:800; color: var(--heading); letter-spacing:-.01em; }
+.ft-brand .ft-logo .logo-mark{ margin-right:10px; }
+.ft-desc{ font-size:14px; line-height:1.65; color: var(--body); max-width:32ch; margin: 0 0 22px; }
+.ft-social{ display:flex; gap:10px; }
+.ft-social a{ width:36px; height:36px; border-radius:50%; background:#fff; border:1px solid var(--line-soft); display:grid; place-items:center; color: var(--body); transition:color .2s, border-color .2s, transform .15s; }
+.ft-social a:hover{ color: var(--heading); border-color: var(--line); transform: translateY(-1px); }
+.ft-h{ font-size:12px; font-weight:700; color: var(--heading); letter-spacing:.12em; text-transform:uppercase; margin: 0 0 18px; }
+.ft-list{ list-style:none; padding:0; margin:0; }
+.ft-list li{ margin-bottom:10px; }
+.ft-list a{ font-size:14px; color: var(--body); transition:color .2s; }
+.ft-list a:hover{ color: var(--heading); }
+.ft-text-link{ line-height:1.5; }
+.ft-bottom{ border-top:1px solid var(--line-faint); padding-top:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+.ft-bottom span{ font-size:13px; color: var(--muted); }
+.ft-bottom-links{ display:flex; gap:22px; flex-wrap:wrap; }
+.ft-bottom-links a{ font-size:13px; color: var(--muted); transition:color .2s; }
+.ft-bottom-links a:hover{ color: var(--heading); }
+
+/* RESPONSIVE */
+@media (max-width: 1024px){
+  .menu, .nav-right .lang{ display:none; }
+  .hero-grid{ grid-template-columns: 1fr; gap: 48px; }
+  .hero-3d{ height: 420px; max-width: 460px; margin: 0 auto; }
+  .h3d-metric{ right: 0; }
+  .h3d-rank-badge{ left: 0; }
+  .h3d-keyword{ right: -2%; }
+  .sec-head{ grid-template-columns: 1fr; gap: 16px; align-items: start; }
+  .sec-meta{ text-align: left; }
+  .po-grid{ grid-template-columns: 1fr; gap: 32px; }
+  .do-grid{ grid-template-columns: repeat(2, 1fr); }
+  .how-track::before{ display: none; }
+  .how-grid{ grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .res-grid{ grid-template-columns: repeat(2, 1fr); }
+  .res-item{ border-right: 0; padding: 18px 12px; border-bottom: 1px solid var(--line-faint); }
+  .res-item:nth-last-child(-n+2){ border-bottom: 0; }
+  .cs-card{ flex: 0 0 calc((100% - 20px) / 2); }
+  .ft-grid{ grid-template-columns: 1fr 1fr; }
+  .ft-brand{ grid-column: 1 / -1; }
+}
+@media (max-width: 640px){
+  .hero-3d{ height: 380px; }
+  .h3d-keyword{ display: none; }
+  .h3d-metric{ top: 0; right: 0; padding: 10px 14px; min-width: 0; }
+  .h3d-metric-num{ font-size: 18px; }
+  .h3d-rank-badge{ bottom: 0; left: 0; padding: 10px 14px; }
+  .h3d-rank-num{ font-size: 18px; }
+  .do-grid{ grid-template-columns: 1fr; }
+  .how-grid{ grid-template-columns: 1fr; }
+  .res-grid{ grid-template-columns: 1fr; padding: 24px; }
+  .res-item{ border-right: 0; padding: 16px 0; border-bottom: 1px solid var(--line-faint); }
+  .res-item:last-child{ border-bottom: 0; }
+  .cs-card{ flex: 0 0 calc(100% - 16px); padding: 24px 22px; }
+  .cs-progress{ flex: 0 1 160px; }
+  .ft-grid{ grid-template-columns: 1fr; }
+  .ft-bottom{ flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<header class="nav-wrap">
+  <div class="container">
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="/">
+        <span class="logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+        TheNextGen
+      </a>
+      <div class="menu">
+        <a href="/services" class="active">Services</a>
+        <a href="/industries">Industries</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact Us</a>
+        <button class="menu-link">Resources <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+      </div>
+      <div class="nav-right">
+        <button class="lang">
+          <svg class="globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          EN
+          <svg class="chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <button class="icon-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="hero-crumb">
+            <a href="/services">Services</a>
+            <span class="sep">/</span>
+            <span class="cur">SEO &amp; Local Search</span>
+          </div>
+          <h1 class="hero-title">SEO that actually drives <em>real growth.</em></h1>
+          <p class="hero-lede">Built for healthcare. Designed for results.</p>
+          <div class="hero-ctas">
+            <a href="#audit" class="btn-primary">Get Free Audit<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <a href="#how" class="btn-ghost">See how it works<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+          </div>
+        </div>
+
+        <div class="hero-3d" aria-hidden="true">
+          <div class="h3d-metric">
+            <div class="h3d-metric-row">
+              <div class="h3d-metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+              <div>
+                <div class="h3d-metric-num">+47<em>%</em></div>
+                <div class="h3d-metric-label">Bookings · 30d</div>
+              </div>
+            </div>
+          </div>
+          <div class="h3d-keyword">
+            <span class="arrow-up">↗</span>
+            "dentist near me" · #1
+          </div>
+          <div class="h3d-main"><div class="h3d-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        urgent care near me<span class="h3d-cursor"></span>
+      </div>
+      <div class="h3d-pack-tag">Map Pack · Top 3</div>
+      <div class="h3d-map">
+        <div class="h3d-pin you"></div>
+        <div class="h3d-pin b"></div>
+        <div class="h3d-pin c"></div>
+      </div>
+      <div class="h3d-row">
+        <div class="h3d-rank you">1</div>
+        <div class="h3d-row-text">
+          <div class="h3d-row-name you">Your Clinic</div>
+          <div class="h3d-row-meta"><span class="h3d-stars">★ 4.9</span> · 0.4 mi · Open now</div>
+        </div>
+        <div class="h3d-row-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      </div>
+      <div class="h3d-row">
+        <div class="h3d-rank">2</div>
+        <div class="h3d-row-text">
+          <div class="h3d-row-name">Hospital Network</div>
+          <div class="h3d-row-meta"><span class="h3d-stars">★ 4.2</span> · 0.8 mi</div>
+        </div>
+      </div>
+      <div class="h3d-row">
+        <div class="h3d-rank">3</div>
+        <div class="h3d-row-text">
+          <div class="h3d-row-name">Big Chain Urgent</div>
+          <div class="h3d-row-meta"><span class="h3d-stars">★ 4.5</span> · 1.2 mi</div>
+        </div>
+      </div></div>
+          <div class="h3d-rank-badge">
+            <div class="h3d-rank-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 14.5 9 21 9.5 16 14 17.5 21 12 17.5 6.5 21 8 14 3 9.5 9.5 9"/></svg>
+            </div>
+            <div>
+              <div class="h3d-rank-num">#1</div>
+              <div class="h3d-rank-label">Local Pack</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section po">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="sec-num">01 — Problem &rarr; Outcome</div>
+          <h2 class="sec-title">From <em>stuck</em> to scaling.</h2>
+        </div>
+        <div class="sec-meta">Side-by-side<br/>before / after</div>
+      </div>
+      <div class="po-grid">
+        <ul class="po-list"><li class="po-pain">
+          <span class="po-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+          <div>
+            <h3 class="po-pain-title">Hospitals own your map</h3>
+            <p class="po-pain-desc">Big systems eat 60%+ of clicks before patients see your name.</p>
+          </div>
+        </li><li class="po-pain">
+          <span class="po-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+          <div>
+            <h3 class="po-pain-title">No measurable rankings</h3>
+            <p class="po-pain-desc">You ship blogs but never know which moves drive bookings.</p>
+          </div>
+        </li><li class="po-pain">
+          <span class="po-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+          <div>
+            <h3 class="po-pain-title">Reviews stuck at 4.0</h3>
+            <p class="po-pain-desc">No system, no cadence, no compounding trust.</p>
+          </div>
+        </li></ul>
+        <div class="po-out">
+          <span class="po-out-eyebrow">After 90 days</span>
+          <h3>Measurable, predictable, repeatable growth.</h3>
+          <div class="po-out-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Local Pack visibility</span><strong>3.2× lift</strong></div><div class="po-out-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Organic bookings</span><strong>+47% / quarter</strong></div><div class="po-out-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Review velocity</span><strong>+18 / month</strong></div><div class="po-out-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Revenue from organic</span><strong>$300K+ / yr</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section do">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="sec-num">02 — What we do</div>
+          <h2 class="sec-title">Six ways we <em>move the needle.</em></h2>
+        </div>
+        <div class="sec-meta">Every retainer<br/>covers all six</div>
+      </div>
+      <div class="do-grid"><div class="do-card">
+          <span class="do-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <h3 class="do-name">Local Authority</h3>
+          <p class="do-desc">GBP, citations, and review programs that win the Map Pack.</p>
+        </div><div class="do-card">
+          <span class="do-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <h3 class="do-name">Technical SEO</h3>
+          <p class="do-desc">Speed, schema, mobile UX — the plumbing Google scores you on.</p>
+        </div><div class="do-card">
+          <span class="do-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></span>
+          <h3 class="do-name">Patient-Intent Content</h3>
+          <p class="do-desc">Condition pages and procedure deep-dives, ranked organically.</p>
+        </div><div class="do-card">
+          <span class="do-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+          <h3 class="do-name">Authority Backlinks</h3>
+          <p class="do-desc">Manual links from medical directories and local press.</p>
+        </div><div class="do-card">
+          <span class="do-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 14.5 9 21 9.5 16 14 17.5 21 12 17.5 6.5 21 8 14 3 9.5 9.5 9"/></svg></span>
+          <h3 class="do-name">Review Strategy</h3>
+          <p class="do-desc">Sentiment-routed requests and response SLAs that compound trust.</p>
+        </div><div class="do-card">
+          <span class="do-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="4" y2="11"/><line x1="10" y1="20" x2="10" y2="4"/><line x1="16" y1="20" x2="16" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
+          <h3 class="do-name">Live Reporting</h3>
+          <p class="do-desc">Dashboard tracking rankings, calls, bookings, and revenue.</p>
+        </div></div>
+    </div>
+  </section>
+
+  <section class="section how" id="how">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="sec-num">03 — How it works</div>
+          <h2 class="sec-title">Four phases. <em>Sixty days.</em></h2>
+        </div>
+        <div class="sec-meta">Same shape<br/>every engagement</div>
+      </div>
+      <div class="how-track">
+        <div class="how-grid"><div class="how-step">
+          <div class="how-dot">01</div>
+          <h3 class="how-name">Audit</h3>
+          <p class="how-desc">Technical, GBP, and competitor diagnostic.</p>
+        </div><div class="how-step">
+          <div class="how-dot">02</div>
+          <h3 class="how-name">Strategy</h3>
+          <p class="how-desc">Priority matrix and KPI dashboard locked.</p>
+        </div><div class="how-step">
+          <div class="how-dot">03</div>
+          <h3 class="how-name">Execution</h3>
+          <p class="how-desc">Foundation + authority + content shipped.</p>
+        </div><div class="how-step">
+          <div class="how-dot">04</div>
+          <h3 class="how-name">Optimization</h3>
+          <p class="how-desc">Monthly retros, A/B tests, scale plan.</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section results">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="sec-num">04 — Results</div>
+          <h2 class="sec-title">Real numbers, <em>real practices.</em></h2>
+        </div>
+        <div class="sec-meta">Audited<br/>aggregate</div>
+      </div>
+      <div class="res-grid"><div class="res-item">
+          <div class="res-num">47<em>+</em></div>
+          <div class="res-lbl">Practices ranked</div>
+        </div><div class="res-item">
+          <div class="res-num">210<em>%</em></div>
+          <div class="res-lbl">Avg organic lift</div>
+        </div><div class="res-item">
+          <div class="res-num">$12M<em>+</em></div>
+          <div class="res-lbl">Revenue driven</div>
+        </div><div class="res-item">
+          <div class="res-num">3.2<em>×</em></div>
+          <div class="res-lbl">Local Pack lift</div>
+        </div></div>
+    </div>
+  </section>
+
+  <section class="section cases">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="sec-num">05 — Case studies</div>
+          <h2 class="sec-title">Six recent <em>engagements.</em></h2>
+        </div>
+        <div class="sec-meta">Swipe or<br/>click through</div>
+      </div>
+      <div class="cs-slider" data-cs-slider>
+        <div class="cs-track-wrap">
+          <div class="cs-track" data-cs-track><a class="cs-card" href="https://thenextgenhealth.com/case-studies/seo-local-search-case-1">
+          <div class="cs-top">
+            <span class="cs-emoji">🏥</span>
+            <div>
+              <div class="cs-num">+45%</div>
+              <div class="cs-num-lbl">Patient Visits</div>
+            </div>
+          </div>
+          <span class="cs-sector">Emergency Room</span>
+          <h3 class="cs-name">Freestanding ER · Dallas</h3>
+          <div class="cs-block"><strong>Problem</strong>Limited local visibility against large hospital systems.</div>
+          <div class="cs-block"><strong>Result</strong>Local Pack dominance + targeted Google Ads.</div>
+        </a><a class="cs-card" href="https://thenextgenhealth.com/case-studies/seo-local-search-case-2">
+          <div class="cs-top">
+            <span class="cs-emoji">⚡</span>
+            <div>
+              <div class="cs-num">3×</div>
+              <div class="cs-num-lbl">Acquisitions</div>
+            </div>
+          </div>
+          <span class="cs-sector">Urgent Care</span>
+          <h3 class="cs-name">Multi-location · Houston</h3>
+          <div class="cs-block"><strong>Problem</strong>Brand not recognised, losing share to chains.</div>
+          <div class="cs-block"><strong>Result</strong>Per-location SEO + targeted local campaigns.</div>
+        </a><a class="cs-card" href="https://thenextgenhealth.com/case-studies/seo-local-search-case-3">
+          <div class="cs-top">
+            <span class="cs-emoji">✨</span>
+            <div>
+              <div class="cs-num">+120%</div>
+              <div class="cs-num-lbl">Lead Growth</div>
+            </div>
+          </div>
+          <span class="cs-sector">Cosmetic Surgery</span>
+          <h3 class="cs-name">Aesthetic clinic · Austin</h3>
+          <div class="cs-block"><strong>Problem</strong>Competing on price, needed premium positioning.</div>
+          <div class="cs-block"><strong>Result</strong>Brand + procedure-intent SEO funnels.</div>
+        </a><a class="cs-card" href="https://thenextgenhealth.com/case-studies/seo-local-search-case-4">
+          <div class="cs-top">
+            <span class="cs-emoji">👨‍⚕️</span>
+            <div>
+              <div class="cs-num">500%</div>
+              <div class="cs-num-lbl">SEO ROI</div>
+            </div>
+          </div>
+          <span class="cs-sector">Primary Care</span>
+          <h3 class="cs-name">Family medicine · San Antonio</h3>
+          <div class="cs-block"><strong>Problem</strong>Invisible for "doctor near me" queries.</div>
+          <div class="cs-block"><strong>Result</strong>Local SEO foundation + condition content.</div>
+        </a><a class="cs-card" href="https://thenextgenhealth.com/case-studies/seo-local-search-case-5">
+          <div class="cs-top">
+            <span class="cs-emoji">🧠</span>
+            <div>
+              <div class="cs-num">2×</div>
+              <div class="cs-num-lbl">Retention</div>
+            </div>
+          </div>
+          <span class="cs-sector">Mental Health</span>
+          <h3 class="cs-name">Therapy practice · Dallas</h3>
+          <div class="cs-block"><strong>Problem</strong>High acquisition cost, poor retention.</div>
+          <div class="cs-block"><strong>Result</strong>Email automation + condition-led content.</div>
+        </a><a class="cs-card" href="https://thenextgenhealth.com/case-studies/seo-local-search-case-6">
+          <div class="cs-top">
+            <span class="cs-emoji">😁</span>
+            <div>
+              <div class="cs-num">#1</div>
+              <div class="cs-num-lbl">Local Pack</div>
+            </div>
+          </div>
+          <span class="cs-sector">Dental Practice</span>
+          <h3 class="cs-name">General dentistry · Irving</h3>
+          <div class="cs-block"><strong>Problem</strong>Not appearing in top-3 local pack.</div>
+          <div class="cs-block"><strong>Result</strong>GBP optimisation + citation cleanup.</div>
+        </a></div>
+        </div>
+        <div class="cs-controls">
+          <button class="cs-btn" data-cs-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+          <div class="cs-progress" aria-hidden="true"></div>
+          <button class="cs-btn" data-cs-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="audit">
+    <div class="container">
+      <div class="cta-panel">
+        <div class="cta-eyebrow">Free audit · No commitment</div>
+        <h2 class="cta-title">Let&rsquo;s make this work.</h2>
+        <p class="cta-desc">A 30-minute call. We&rsquo;ll audit your current setup and share the closest case study from this library — whether you sign with us or not.</p>
+        <a href="#book" class="btn-primary">Book Strategy Call<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </section>
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <a href="/" class="ft-logo">
+          <span class="logo-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+          TheNextGen
+        </a>
+        <p class="ft-desc">Full-service healthcare marketing agency. SEO, Google Ads, social media, website design, and HIPAA-compliant automation for clinics.</p>
+        <div class="ft-social">
+          <a href="https://instagram.com/thenextgenhealth" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://facebook.com/thenextgenhealth" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://linkedin.com/company/thenextgenhealth" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4 class="ft-h">Services</h4>
+        <ul class="ft-list">
+          <li><a href="/services/seo-local-search">SEO &amp; Local Search</a></li>
+          <li><a href="/services/google-ads">Google Ads</a></li>
+          <li><a href="/services/social-media-marketing">Social Media</a></li>
+          <li><a href="/services/website-design-dev">Website Design</a></li>
+          <li><a href="/services/email-drip-campaigns">Email Campaigns</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4 class="ft-h">Resources</h4>
+        <ul class="ft-list">
+          <li><a href="/resources/automation">Automation</a></li>
+          <li><a href="/resources/news">Healthcare News</a></li>
+          <li><a href="/resources/case-studies">Case Studies</a></li>
+          <li><a href="/resources/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4 class="ft-h">Contact</h4>
+        <ul class="ft-list">
+          <li><a href="https://www.google.com/maps/place/3001+Skyway+Cir+N,+Irving,+TX+75038" class="ft-text-link">3001 Skyway Circle&nbsp;N<br/>Irving, TX&nbsp;75038</a></li>
+          <li><a href="mailto:hello@thenextgenhealth.com">hello@thenextgenhealth.com</a></li>
+          <li><a href="tel:+19728481153">+1 (972) 848&ndash;1153</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>&copy; 2026 TheNextGen Healthcare Marketing. All rights reserved.</span>
+      <div class="ft-bottom-links">
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="#sitemap">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    const wrap = document.querySelector('[data-cs-slider]');
+    if (!wrap) return;
+    const track = wrap.querySelector('[data-cs-track]');
+    const cards = track.children;
+    const prog  = wrap.querySelector('.cs-progress');
+    const prev  = wrap.querySelector('[data-cs-prev]');
+    const next  = wrap.querySelector('[data-cs-next]');
+    let index = 0;
+    const len = cards.length;
+    function visible(){
+      const w = window.innerWidth;
+      if (w <= 640)  return 1;
+      if (w <= 1024) return 2;
+      return 3;
+    }
+    function maxIndex(){ return Math.max(0, len - visible()); }
+    function update(){
+      const v = visible();
+      const card = cards[0];
+      if (!card) return;
+      const cw = card.getBoundingClientRect().width;
+      const gap = parseInt(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 20;
+      track.style.transform = 'translateX(-' + (index * (cw + gap)) + 'px)';
+      const max = maxIndex();
+      const ratio = max === 0 ? 1 : (index / max);
+      const minFill = (v / len) * 100;
+      const span = 100 - minFill;
+      prog.style.setProperty('--cs-fill', (minFill + span * ratio) + '%');
+      prev.disabled = index <= 0;
+      next.disabled = index >= max;
+    }
+    function go(d){ index = Math.max(0, Math.min(maxIndex(), index + d)); update(); }
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(1));
+    let startX = 0, isDown = false;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDown = true; }, {passive:true});
+    track.addEventListener('touchend', e => {
+      if (!isDown) return; isDown = false;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    });
+    wrap.tabIndex = 0;
+    wrap.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  go(-1);
+      if (e.key === 'ArrowRight') go(1);
+    });
+    let resizeT;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(() => { index = Math.min(index, maxIndex()); update(); }, 120);
+    });
+    requestAnimationFrame(update);
+  })();
+</script>
+</body>
+</html>

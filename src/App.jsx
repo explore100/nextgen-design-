@@ -12,6 +12,7 @@ import FAQ from './pages/FAQ.jsx'
 import HealthcareNews from './pages/HealthcareNews.jsx'
 import Automation from './pages/Automation.jsx'
 import About from './pages/About.jsx'
+import HtmlFilePage from './components/HtmlFilePage.jsx'
 
 export default function App() {
   return (
@@ -21,6 +22,15 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/seo-local-search" element={<ServicesSEO />} />
+          <Route path="/services/google-ads" element={<HtmlFilePage filePath="/source-pages/services-google-ads.html" fallbackTitle="Google Ads — TheNextGen Healthcare Marketing" />} />
+          <Route path="/services/social-media-marketing" element={<HtmlFilePage filePath="/source-pages/services-social-media-marketing.html" fallbackTitle="Social Media Marketing — TheNextGen Healthcare Marketing" />} />
+          <Route path="/services/website-design-dev" element={<HtmlFilePage filePath="/source-pages/services-website-design-dev.html" fallbackTitle="Website Design & Development — TheNextGen Healthcare Marketing" />} />
+          <Route path="/services/email-drip-campaigns" element={<HtmlFilePage filePath="/source-pages/services-email-drip-campaigns.html" fallbackTitle="Email Drip Campaigns — TheNextGen Healthcare Marketing" />} />
+          <Route path="/services/content-copywriting" element={<HtmlFilePage filePath="/source-pages/services-content-copywriting.html" fallbackTitle="Content & Copywriting — TheNextGen Healthcare Marketing" />} />
+          <Route path="/services/google-business-profile" element={<HtmlFilePage filePath="/source-pages/services-google-business-profile.html" fallbackTitle="Google Business Profile — TheNextGen Healthcare Marketing" />} />
+          <Route path="/services/analytics-reporting" element={<HtmlFilePage filePath="/source-pages/services-analytics-reporting.html" fallbackTitle="Analytics & Reporting — TheNextGen Healthcare Marketing" />} />
+          <Route path="/services/brand-identity-design" element={<HtmlFilePage filePath="/source-pages/services-brand-identity-design.html" fallbackTitle="Brand Identity Design — TheNextGen Healthcare Marketing" />} />
+          <Route path="/seo-guide" element={<HtmlFilePage filePath="/source-pages/seo-guide.html" fallbackTitle="SEO Guide — TheNextGen Healthcare Marketing" />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />

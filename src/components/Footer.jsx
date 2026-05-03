@@ -46,14 +46,14 @@ export default function Footer() {
             <h4 className="ft-h">Services</h4>
             <ul className="ft-list">
               <li><Link to="/services/seo-local-search">SEO &amp; Local Search</Link></li>
-              <li><a href="/services/google-ads">Google Ads</a></li>
-              <li><a href="/services/social-media-marketing">Social Media</a></li>
-              <li><a href="/services/website-design-dev">Website Design</a></li>
-              <li><a href="/services/email-drip-campaigns">Email Campaigns</a></li>
-              <li><a href="/services/content-copywriting">Content Marketing</a></li>
-              <li><a href="/services/google-business-profile">Google Business Profile</a></li>
-              <li><a href="/services/analytics-reporting">Analytics</a></li>
-              <li><a href="/services/brand-identity-design">Branding</a></li>
+              <li><Link to="/services/google-ads">Google Ads</Link></li>
+              <li><Link to="/services/social-media-marketing">Social Media</Link></li>
+              <li><Link to="/services/website-design-dev">Website Design</Link></li>
+              <li><Link to="/services/email-drip-campaigns">Email Campaigns</Link></li>
+              <li><Link to="/services/content-copywriting">Content Marketing</Link></li>
+              <li><Link to="/services/google-business-profile">Google Business Profile</Link></li>
+              <li><Link to="/services/analytics-reporting">Analytics</Link></li>
+              <li><Link to="/services/brand-identity-design">Branding</Link></li>
             </ul>
           </div>
 
@@ -63,7 +63,7 @@ export default function Footer() {
             <ul className="ft-list">
               <li><Link to="/about">About</Link></li>
               <li><Link to="/resources/faq">FAQ</Link></li>
-              <li><a href="/seo-guide">SEO Guide</a></li>
+              <li><Link to="/seo-guide">SEO Guide</Link></li>
               <li><Link to="/pricing">Pricing</Link></li>
               <li><Link to="/blog">Blog</Link></li>
               <li><Link to="/industries">Industries</Link></li>
