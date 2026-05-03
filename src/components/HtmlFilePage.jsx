@@ -1,5 +1,85 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 
+const PAGE_SCOPE = '.html-file-page'
+
+function scopeSelector(selector) {
+  const trimmed = selector.trim()
+
+  if (!trimmed) {
+    return trimmed
+  }
+
+  if (trimmed.startsWith(PAGE_SCOPE)) {
+    return trimmed
+  }
+
+  if (trimmed === ':root' || trimmed === 'html' || trimmed === 'body') {
+    return PAGE_SCOPE
+  }
+
+  const replaced = trimmed
+    .replace(/(^|\s|>|\+|~)(:root|html|body)(?=\b)/g, `$1${PAGE_SCOPE}`)
+
+  if (replaced.includes(PAGE_SCOPE)) {
+    return replaced
+  }
+
+  return `${PAGE_SCOPE} ${replaced}`
+}
+
+function scopeCss(css) {
+  let index = 0
+  let output = ''
+
+  while (index < css.length) {
+    const nextOpen = css.indexOf('{', index)
+    if (nextOpen === -1) {
+      output += css.slice(index)
+      break
+    }
+
+    const selectorText = css.slice(index, nextOpen)
+    let depth = 1
+    let cursor = nextOpen + 1
+
+    while (cursor < css.length && depth > 0) {
+      const char = css[cursor]
+      if (char === '{') depth += 1
+      if (char === '}') depth -= 1
+      cursor += 1
+    }
+
+    const blockText = css.slice(nextOpen + 1, cursor - 1)
+    const trimmedSelector = selectorText.trim()
+
+    if (!trimmedSelector) {
+      output += `${selectorText}{${blockText}}`
+      index = cursor
+      continue
+    }
+
+    if (trimmedSelector.startsWith('@')) {
+      if (trimmedSelector.startsWith('@media') || trimmedSelector.startsWith('@supports')) {
+        output += `${selectorText}{${scopeCss(blockText)}}`
+      } else {
+        output += `${selectorText}{${blockText}}`
+      }
+      index = cursor
+      continue
+    }
+
+    const scopedSelector = selectorText
+      .split(',')
+      .map(scopeSelector)
+      .join(', ')
+
+    output += `${scopedSelector}{${blockText}}`
+    index = cursor
+  }
+
+  return output
+}
+
 function parseHtmlDocument(source) {
   const parser = new DOMParser()
   const doc = parser.parseFromString(source, 'text/html')
@@ -26,7 +106,7 @@ function parseHtmlDocument(source) {
 
   return {
     title,
-    styles,
+    styles: scopeCss(styles),
     links,
     scripts,
     bodyHtml: doc.body.innerHTML,
@@ -139,7 +219,7 @@ export default function HtmlFilePage({ filePath, fallbackTitle = '' }) {
   return (
     <>
       <style>{parsed.styles}</style>
-      <div ref={hostRef} dangerouslySetInnerHTML={{ __html: parsed.bodyHtml }} />
+      <div className="html-file-page" ref={hostRef} dangerouslySetInnerHTML={{ __html: parsed.bodyHtml }} />
     </>
   )
 }
